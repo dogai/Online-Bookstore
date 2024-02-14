@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Online Bookstore</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            background-image: url(Images/background.jpg);
+            background-size: cover;
+            
+            font-family: sans-serif;
+        }
+
+        .menu-bar{
+            background-color: white;
+            text-align: center;
+        }
+
+        .menu-bar ul{
+            display: inline-flex;
+            list-style: none;
+            color: brown;
+        }
+
+        .menu-bar ul li{
+            width: 120px;
+            margin: 15px;
+            padding: 10px;
+        }
+
+        .menu-bar ul li a{
+            text-decoration: none;
+            color: brown;
+        }
+
+        .active, .menu-bar ul li:hover{
+            background-color: burlywood;
+            border-radius: 3px;
+        }
+
+        .sub-menu-1{
+            display: none;
+        }
+
+        .menu-bar ul li:hover .sub-menu-1{
+            display: block;
+            position: absolute;
+            background-color: white;
+            margin-top: 15px;
+            margin-left: -15px;
+        }
+
+        .menu-bar ul li:hover .sub-menu-1 ul{
+            display: block;
+            margin: 8px;
+        }
+
+        .menu-bar ul li:hover .sub-menu-1 ul li{
+            width: 150px;
+            padding: 10px;
+            border-bottom: 1px dotted brown;
+            border-radius: 0;
+            text-align: left;
+        }
+
+        .menu-bar ul li:hover .sub-menu-1 ul li:last-child{
+            border-bottom: none;
+        }
+
+        .menu-bar ul li:hover .sub-menu-1 ul li a:hover{
+            color: bisque;
+        }
+
+        .content{
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            text-align: center;
+            color: white;
+        }
+
+        .content h1{
+            font-size: 50px;
+            margin-top: 80px;
+        }
+
+        .content p{
+            margin: 20px auto;
+            font-weight: 100;
+            line-height: 25px;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+<div class="menu-bar">    
+    <ul>
+        <li><a href="#">Kitap</a>
+            <div class="sub-menu-1">
+                <ul>
+                    <li><a href="#">Edebiyat</a></li>
+                    <li><a href="userpage.html">Roman</a></li>
+                    <li><a href="#">Çocuk ve Gençlik</a></li>
+                    <li><a href="#">Araştırma-Tarih</a></li>
+                    <li><a href="#">Kişisel Gelişim</a></li>
+                    <li><a href="#">Bilim</a></li>
+                    <li><a href="#">Felsefe</a></li>
+                </ul>
+            </div>
+        </li>
+        <li><a href="#">Yabancı Kitaplar</a>
+            <div class="sub-menu-1">
+                <ul>
+                    <li><a href="#">Fiction</a></li>
+                    <li><a href="#">Non Fiction</a></li>
+                    <li><a href="#">Children&Teen</a></li>
+                </ul>
+            </div>
+        </li>
+        <li><a href="#">Çocuk Kitapları</a>
+            <div class="sub-menu-1">
+                <ul>
+                    <li><a href="#">Okul Çağı</a></li>
+                    <li><a href="#">Okul Öncesi</a></li>
+                    <li><a href="#">Gençlik 10+ Yaş</a></li>
+                    <li><a href="#">Okul Kitapları</a></li>
+                </ul>
+            </div>
+        </li>
+        <li><a href="#">Çizgi Roman</a>
+            <div class="sub-menu-1">
+                <ul>
+                    <li><a href="#">Türkçe Çizgi Roman</a></li>
+                    <li><a href="#">İngilizce Çizgi Roman</a></li>
+                    <li><a href="#">Manga</a></li>
+                </ul>
+            </div>
+        </li>
+        <li><a href="#">Sınav Hazırlık</a>
+            <div class="sub-menu-1">
+                <ul>
+                    <li><a href="#">Üniversite Ders Kitapları</a></li>
+                    <li><a href="#">Sınav Kitapları</a></li>
+                    <li><a href="#">Testler</a></li>
+                    <li><a href="#">KPSS</a></li>
+                    <li><a href="#">YKS</a></li>
+                    <li><a href="#">ALES</a></li>
+                </ul>
+            </div>
+        </li>
+        <li><a href="#">Dergiler</a>
+            <div class="sub-menu-1">
+                <ul>
+                    <li><a href="#">Aylık Dergiler</a></li>
+                    <li><a href="#">Edebiyat Dergisi</a></li>
+                    <li><a href="#">Tarih Dergisi</a></li>
+                    <li><a href="#">Spor Dergisi</a></li>
+                    <li><a href="#">Bilim Dergisi</a></li>
+                    <li><a href="#">Felsefe Dergisi</a></li>
+                </ul>
+            </div>
+        </li>
+        <li><a href="#">Yeni Çıkanlar</a></li>
+        <li><a href="#">Çok Satanlar</a></li>
+        <li><a href="bookRegister.html">Kitap Sat</a></li>
+        <li class="active"><a href="login.html">Giriş Yap</a></li>
+    </ul>
+</div>
+<div class="content">
+    <h1>BİR KİTAPLA MÜMKÜN</h1>
+    <p>Kitaplarım bana yetecek kadar büyük bir krallıktır. <br> William Shakespeare</p>
+</div>
+
+
+
+</body>
+</html>

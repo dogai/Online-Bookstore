@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roman</title>
+    <style>
+        .container {
+            top: 650px;
+            left: 750px;
+            transform: translate(-50%, -50%);
+            position: absolute;
+            width: max-content;
+            background: white;
+        }
+
+        .card {
+            border: 1px solid black;
+            width: max-content;
+            text-align: center;
+            display: inline-block;
+            margin: 5px;
+        }
+
+        .card img {
+            width: 200px;
+            padding: 5px;
+        }
+
+        .title {
+            font-weight: bold;
+            margin: 20px;
+        }
+
+        .author {
+            font-size: 14px;
+            margin: 5px;
+        }
+
+        .yayınevi {
+            font-size: 10px;
+        }
+
+        .price {
+            font-size: 18px;
+            border: 1px solid rgb(168, 161, 161);
+            width: max-content;
+            text-align: center;
+            display: inline-block;
+            margin: 5px;
+        }
+
+        button {
+            border: 2px solid brown;
+            background: burlywood;
+            color: white;
+            font-weight: bold;
+            margin: 20px;
+            padding: 5px 10px;
+        }
+
+        button:hover {
+            box-shadow: 0 0 5px 5px rosybrown;
+        }
+
+        .card a {
+            text-decoration: none;
+            color: white;
+        }
+
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+
+            font-family: sans-serif;
+            background: wheat;
+        }
+
+        .menu-bar {
+            background-color: white;
+            text-align: center;
+
+        }
+
+        .menu-bar ul {
+            display: inline-flex;
+            list-style: none;
+            color: brown;
+        }
+
+        .menu-bar ul li {
+            width: 120px;
+            margin: 15px;
+            padding: 10px;
+        }
+
+        .menu-bar ul li a {
+            text-decoration: none;
+            color: brown;
+        }
+
+        .active,
+        .menu-bar ul li:hover {
+            background-color: burlywood;
+            border-radius: 3px;
+        }
+
+        .sub-menu-1 {
+            display: none;
+        }
+
+        .menu-bar ul li:hover .sub-menu-1 {
+            display: block;
+            position: absolute;
+            background-color: white;
+            margin-top: 15px;
+            margin-left: -15px;
+        }
+
+        .menu-bar ul li:hover .sub-menu-1 ul {
+            display: block;
+            margin: 8px;
+        }
+
+        .menu-bar ul li:hover .sub-menu-1 ul li {
+            width: 150px;
+            padding: 10px;
+            border-bottom: 1px dotted brown;
+            border-radius: 0;
+            text-align: left;
+        }
+
+        .menu-bar ul li:hover .sub-menu-1 ul li:last-child {
+            border-bottom: none;
+        }
+
+        .menu-bar ul li:hover .sub-menu-1 ul li a:hover {
+            color: bisque;
+        }
+
+        .kitaplar {
+            font-size: 18px;
+            padding-left: 20px;
+            margin: 10px;
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                url: "https://localhost:44320/book/getall",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    // alert("Kayıt Başarılı")
+                    var beList = document.getElementById('be-list');
+                    divNode = document.createElement('div'),
+
+                        data.map(item => {    
+                            divClone = divNode.cloneNode();
+                            divClone.className  = "card";
+                        
+                            imageDiv = document.createElement('img')
+                            
+
+                            imageDiv.src  = item.imagePath;
+                            divClone.append(imageDiv);
+
+                            bookDetailDiv = document.createElement('div')
+
+                            bookDetailDiv.className  = "title";
+                            bookDetailDiv.innerHTML = item.name;
+                            divClone.append(bookDetailDiv);
+
+                            bookDetailDiv = document.createElement('div')
+
+                            bookDetailDiv.className  = "author";
+                            bookDetailDiv.innerHTML = item.author;
+                            divClone.append(bookDetailDiv);
+
+                            bookDetailDiv = document.createElement('div')
+
+                            bookDetailDiv.className  = "price";
+                            bookDetailDiv.innerHTML = item.price;
+                            divClone.append(bookDetailDiv," TL");
+
+                            bookDetailDiv = document.createElement('div')
+
+                            bookDetailDiv.className  = "publisher";
+                            bookDetailDiv.innerHTML = item.publisher;
+                            divClone.append(bookDetailDiv);
+
+                            buttonDiv = document.createElement('button')
+
+                            buttonDiv.className  = "button";
+                            buttonDiv.innerHTML = "Add to Cart";
+                            divClone.append(buttonDiv);
+
+                           
+
+                            aNode = document.createElement('a')
+                            bookDetailDiv = document.createElement('div')
+
+                            console.log("divClone", divClone)
+                            beList.append(divClone);
+                            
+
+                        })
+
+                    //<div class="card" id="book1">
+                    //     <img src="korluk.jpg">
+                    //     <div class="title">Körlük</div>
+                    //     <div class="author">Jose Saramago</div>
+                    //     <div class="price">39,00 TL</div>
+                    //     <div class="yayınevi">Kırmızı Kedi</div>
+                    //     <button><a href="addcart.html">Add to Cart</a></button>
+                    // </div>
+
+                    // $.each(returnedData, function (index, value) {
+                    //     // do stuff with it, e. g.:
+                    //     //  $('#result').html($('#result').html() + value);
+                    // });
+                },
+            });
+        });
+    </script>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("form").on("submit", function (event) {
+            event.preventDefault();
+
+            var formValues = {
+                name: $('#bookName').val(),
+                description: $('#description').val(),
+                author: $('#author').val(),
+                imagePath: $('#imagePath').val(),
+                price: $('#price').val(),
+                publisher: $('#publisher').val(),
+            };
+
+            $.ajax({
+                
+                type: "DELETE",
+                url: "https://localhost:44320/book",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(formValues), //çevirme
+                dataType: "json",
+                success: function (data) {
+                    alert("Silme Başarılı")
+                },
+            });
+        });
+    });
+</script>
+
+
+
+</head>
+
+<body>
+    <div class="menu-bar">
+        <ul>
+            <li><a href="#">Kitap</a>
+                <div class="sub-menu-1">
+                    <ul>
+                        <li><a href="#">Edebiyat</a></li>
+                        <li><a href="#">Roman</a></li>
+                        <li><a href="#">Çocuk ve Gençlik</a></li>
+                        <li><a href="#">Araştırma-Tarih</a></li>
+                        <li><a href="#">Kişisel Gelişim</a></li>
+                        <li><a href="#">Bilim</a></li>
+                        <li><a href="#">Felsefe</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li><a href="#">Yabancı Kitaplar</a>
+                <div class="sub-menu-1">
+                    <ul>
+                        <li><a href="#">Fiction</a></li>
+                        <li><a href="#">Non Fiction</a></li>
+                        <li><a href="#">Children&Teen</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li><a href="#">Çocuk Kitapları</a>
+                <div class="sub-menu-1">
+                    <ul>
+                        <li><a href="#">Okul Çağı</a></li>
+                        <li><a href="#">Okul Öncesi</a></li>
+                        <li><a href="#">Gençlik 10+ Yaş</a></li>
+                        <li><a href="#">Okul Kitapları</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li><a href="#">Çizgi Roman</a>
+                <div class="sub-menu-1">
+                    <ul>
+                        <li><a href="#">Türkçe Çizgi Roman</a></li>
+                        <li><a href="#">İngilizce Çizgi Roman</a></li>
+                        <li><a href="#">Manga</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li><a href="#">Sınav Hazırlık</a>
+                <div class="sub-menu-1">
+                    <ul>
+                        <li><a href="#">Üniversite Ders Kitapları</a></li>
+                        <li><a href="#">Sınav Kitapları</a></li>
+                        <li><a href="#">Testler</a></li>
+                        <li><a href="#">KPSS</a></li>
+                        <li><a href="#">YKS</a></li>
+                        <li><a href="#">ALES</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li><a href="#">Dergiler</a>
+                <div class="sub-menu-1">
+                    <ul>
+                        <li><a href="#">Aylık Dergiler</a></li>
+                        <li><a href="#">Edebiyat Dergisi</a></li>
+                        <li><a href="#">Tarih Dergisi</a></li>
+                        <li><a href="#">Spor Dergisi</a></li>
+                        <li><a href="#">Bilim Dergisi</a></li>
+                        <li><a href="#">Felsefe Dergisi</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li><a href="#">Yeni Çıkanlar</a></li>
+            <li><a href="#">Çok Satanlar</a></li>
+            <li class="active"><a href="bookRegister.html">Kitap Sat</a></li>
+        </ul>
+    </div>
+
+    <div class="kitaplar">Romanlar</div>
+
+    <div class="container">
+        <div class="line1">
+            <div class="card" id="book1">
+                <img src="https://cdn1.dokuzsoft.com/u/kitapperonu/img/c/k/o/korluk-1619941787.jpg">
+                <div class="title">Körlük</div>
+                <div class="author">Jose Saramago</div>
+                <div class="price">39,00 TL</div>
+                <div class="yayınevi">Kırmızı Kedi</div>
+                <button><a href="addcart.html">Add to Cart</a></button>
+            </div>
+            <div class="card" id="book2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkHtIY8Gy0NU0OyHGxWwOxEbT4BtzHZZH14g&usqp=CAU">
+                <div class="title">1984</div>
+                <div class="author">George Orwell</div>
+                <div class="price">27,00 TL</div>
+                <div class="yayınevi">Can Yayınları</div>
+                <button>Add to Cart</button>
+            </div>
+            <div class="card" id="book3">
+                <img src="https://i.dr.com.tr/cache/600x600-0/originals/0000000402142-1.jpg">
+                <div class="title">Satranç</div>
+                <div class="author">Stefan Zweig</div>
+                <div class="price">7,00 TL</div>
+                <div class="yayınevi">İş Bankası Kültür Yayınları</div>
+                <button>Add to Cart</button>
+            </div>
+            <div class="card" id="book4">
+                <img src="https://m.media-amazon.com/images/I/41LL6Ki+k7L._AC_SY1000_.jpg">
+                <div class="title">Altıncı Koğuş</div>
+                <div class="author">Anton Çehov</div>
+                <div class="price">7,00 TL</div>
+                <div class="yayınevi">İş Bankası Kültür Yayınları</div>
+                <button>Add to Cart</button>
+            </div>
+            <div class="card" id="book5">
+                <img src=http://3.bp.blogspot.com/-8NgAw_mGobc/VJu9IsvNPoI/AAAAAAAAALY/7FoI76ZgbV8/s1600/AA-KA-1051-Jack%2BLondon-Martin%2BEden.jpg">
+                <div class="title">Martin Eden</div>
+                <div class="author">Jack London</div>
+                <div class="price">25,00 TL</div>
+                <div class="yayınevi">İş Bankası Kültür Yayınları</div>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+        <!-- Backendden gelen Kitap Listesi -->
+        <div class="line2" id="be-list"></div>
+
+        <!-- <div class="line2">
+            <div class="card" id="book1">
+                <img src="cesur.jpg">
+                <div class="title">Cesur Yeni Dünya</div>
+                <div class="author">Aldous Huxley</div>
+                <div class="price">40,00 TL</div>
+                <div class="yayınevi">İthaki Yayınları</div>
+                <button>Add to Cart</button>
+            </div>
+            <div class="card" id="book2">
+                <img src="ay.jpg">
+                <div class="title">Ay Işığı Sokağı</div>
+                <div class="author">Stefan Zweig</div>
+                <div class="price">7,00 TL</div>
+                <div class="yayınevi">İş Bankası Kültür Yayınları</div>
+                <button>Add to Cart</button>
+            </div>
+            <div class="card" id="book3">
+                <img src="dune.jpg">
+                <div class="title">Dune</div>
+                <div class="author">Frank Herbert</div>
+                <div class="price">78,00 TL</div>
+                <div class="yayınevi">İthaki Yayınları</div>
+                <button>Add to Cart</button>
+            </div>
+            <div class="card" id="book4">
+                <img src="sinekler.jpg">
+                <div class="title">Sineklerin Tanrısı</div>
+                <div class="author">William Golding</div>
+                <div class="price">20,00 TL</div>
+                <div class="yayınevi">İş Bankası Kültür Yayınları</div>
+                <button>Add to Cart</button>
+            </div>
+            <div class="card" id="book5">
+                <img src="hayvan.jpg">
+                <div class="title">Hayvan Çiftliği</div>
+                <div class="author">George Orwell</div>
+                <div class="price">14,00 TL</div>
+                <div class="yayınevi">Can Yayınları</div>
+                <button>Add to Cart</button>
+            </div>
+        </div> -->
+    </div>
+
+
+</body>
+
+</html>

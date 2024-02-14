@@ -1,0 +1,160 @@
+<html>
+    <style>
+        *{
+            font-family: 'Comfortaa', cursive;
+            margin: 5 ;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            max-width: 1200px;
+            margin: 5;
+        }
+        .container > h1{
+            padding: 20px 0;
+        }
+        .cart{
+            display: flex;
+        }
+        .books{
+            flex: 0.75;
+        }
+        .book{
+            display: flex;
+            width: 100%;
+            height: 255px;
+            overflow: hidden;
+            border: 1px solid silver;
+            margin-bottom: 20px;
+        }
+        .book:hover{
+            border: none;
+            box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            transform: scale(1.01);
+        }
+        .book > img{
+            width: 150px;
+            height: 250px;
+            object-fit: cover;
+        }
+        .book > img:hover{
+            transform: scale(1.02);
+        }
+        .book-info{
+            padding: 20px;
+            width: 100%;
+            position: relative;
+        }
+        .book-name, .book-price{
+            margin-bottom: 20px;
+        }
+        .book-remove{
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 25px;
+            background-color: green;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .book-remove:hover{
+            background-color: white;
+            color: green;
+            font-weight: 600;
+            border: 1px solid green;
+        }
+        .book-quantity > input{
+            width: 40px;
+            padding: 5px;
+            text-align: center;
+        }
+        .cart-total{
+            flex: 0.25;
+            margin-left: 20px;
+            padding: 20px;
+            height: 240px;
+            border: 1px solid silver;
+            border-radius: 5px;
+        }
+        .cart-total p{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        .cart-total a{
+            display: block;
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+            background-color: tomato;
+            color: white;
+            text-decoration: none;
+        }
+        .cart-total a:hover{
+            background-color: red;
+        }
+        @media screen and (max-width: 1220px){
+            .container{
+                max-width: 95%;
+            }
+            
+        }
+        @media screen and (max-width: 850px){
+            .cart{
+                flex-direction: column;
+            }
+        }
+    </style>
+    
+    <head>
+        <title>Shopping Cart </title>
+        <link rel="stylesheet" type="text/css" href="cart.css">
+    </head>
+    <body>
+        <div class="container"></div>
+        <h1> Shopping Cart </h1>
+        <div class="cart">
+            <div class="books">
+                <div class="book">
+                    <img src="George Orwell - Hayvan Çiftliği.jpg">
+                    <div class="book-info">
+                        <h3 class="book-name"> George Orwell - Hayvan Çiftliği</h3>
+                        <h4 class="book-price"> ₺ 9.80 </h4>
+                        <p class="book-quantity"> Qnt: <input value="1" name="">
+                        <p>
+                            <p class="book-remove">
+                            <span class="remove">Remove</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="book">
+                <img src="Jose Mauro de Vasconcelos - Şeker Portakalı.jpg">
+                <div class="book-info">
+                    <h3 class="book-name"> Jose Mauro de Vasconcelos - Şeker Portakalı </h3>
+                    <h4 class="book-price"> ₺ 18.75 </h4>
+                    <p class="book-quantity"> Qnt: <input value="1" name="">
+                    <p>
+                        <p class="book-remove">
+                        <span class="remove">Remove</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="cart-total"> 
+            <p>
+                <span>Total Price</span>
+                <span> ₺ 22.55 </span>
+            </p>
+            <p>
+                <span>Number of Items</span>
+                <span> 2 </span>
+            </p>
+            <a href="#"> Proceed to Checkout</a>
+        </div>
+          
+    </body>
+</html>
